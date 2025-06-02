@@ -1,0 +1,117 @@
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/Inter/static/Inter_18pt-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
+    font-weight: 400;
+}
+
+html {
+    font-size: 1.6rem;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter";
+    font-weight: 400;
+    /* Современный стек шрифтов */
+    font-size: 1.6rem;
+    /* 16px как базовый размер текста */
+    color: #000;
+    /* Мягкий чёрный для текста */
+    background-color: #fff;
+    /* Белый фон по умолчанию */
+    -webkit-font-smoothing: antialiased;
+    /* Сглаживание шрифтов для Webkit */
+    -moz-osx-font-smoothing: grayscale;
+    /* Сглаживание для Firefox */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: "Inter" !important;
+    /* Наследуем шрифт от body */
+    font-size: 100%;
+    /* Убираем странные размеры по умолчанию */
+    margin: 0;
+    /* Обнуляем отступы */
+    border: none;
+    /* Убираем стандартные границы */
+    background: none;
+    /* Убираем фон */
+}
+
+button {
+    cursor: pointer;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    width: 100%;
+    max-width: 1360px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+section{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.wrapper {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}

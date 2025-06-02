@@ -1,31 +1,31 @@
-.list{
+.list {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     gap: 25px 20px;
 }
 
-.card__item{
+.card__item {
     display: flex;
     flex-direction: column;
     max-width: 314px;
     width: 100%;
 
-    &>.img__mask{
+    &>.img__mask {
         max-width: inherit;
         height: 174px;
         overflow: hidden;
         display: flex;
         align-items: center;
 
-        &>img{
+        &>img {
             width: inherit;
-            object-fit: cover; 
+            object-fit: cover;
             clip-path: url(#ticketMask);
         }
     }
 
-    &>.main__content{
+    &>.main__content {
         position: relative;
         max-width: inherit;
         width: inherit;
@@ -38,59 +38,59 @@
         padding: 25px 25px 25px 25px;
         gap: 10px;
 
-        &>.dashed-line-img{
+        &>.dashed-line-img {
             position: absolute;
             top: -5px;
             left: 0;
             z-index: 1;
         }
 
-        &>.card_top__title{
+        &>.card_top__title {
             text-transform: uppercase;
             color: #A61E26;
             font-size: 14px;
         }
 
-        &>.card_title{
+        &>.card_title {
             font-weight: 600;
             font-size: 18px;
             color: #000;
             margin-bottom: auto;
         }
 
-        &>.card_place{
+        &>.card_place {
             font-size: 14px;
         }
 
-        &>.date_time__block{
+        &>.date_time__block {
             display: flex;
             width: inherit;
             gap: 28px;
             margin-top: 15px;
 
-            &>li{
+            &>li {
                 display: flex;
                 gap: 10px;
                 align-items: center;
 
-                &>img{
+                &>img {
                     width: 25px;
                     height: 25px;
                 }
 
-                &>p{
+                &>p {
                     font-size: 16px;
                 }
             }
         }
 
-        &>.btn{
+        &>.btn {
             margin: 15px auto 0 auto;
         }
     }
 }
 
-.btn{
+.btn {
     border: none;
     outline: none;
     cursor: pointer;
@@ -104,25 +104,25 @@
     transition: 0.3s;
     text-transform: uppercase;
 
-    &:hover{
+    &:hover {
         background-color: #56040A;
         color: #fff;
     }
 
-    &.btn__fill{
+    &.btn__fill {
         background-color: #A61E26;
         border-color: #A61E26;
         color: #E8E8E8;
         text-transform: none;
 
-        &:hover{
+        &:hover {
             background-color: transparent;
             color: #A61E26;
         }
     }
 }
 
-.info__block{
+.info__block {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -131,38 +131,38 @@
     box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.15);
 }
 
-.text__block{
+.text__block {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.text__def{
+.text__def {
     font-size: 16px;
     font-weight: 400;
     color: #000;
 }
 
-.text__small{
+.text__small {
     font-size: 14px;
     font-weight: 400;
     color: #C4C4C4;
 }
 
-.title__small{
+.title__small {
     font-size: 20px;
     font-weight: 600;
     color: #000;
 }
 
-.title__def{
+.title__def {
     font-size: 36px;
     font-weight: 600;
     color: #000;
     text-transform: uppercase;
 }
 
-.title__big{
+.title__big {
     width: fit-content;
     margin: 0 auto;
     font-size: 40px;
@@ -170,12 +170,12 @@
     color: #2C0E0E;
     text-transform: uppercase;
 
-    &>span{
+    &>span {
         color: #A61E26;
     }
 }
 
-.info__block_spec{
+.info__block_spec {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -185,57 +185,77 @@
     border: 1px solid #C4C4C4;
     box-shadow: 0px 0px 15px 2px transparent;
     gap: 25px;
-    
-    & .title__small{
+
+    & .title__small {
         text-transform: uppercase;
     }
 
-    & .text__def{
+    & .text__def {
         font-size: 14px;
     }
 
-    & .text__small{
+    & .text__small {
         margin-top: auto;
     }
 
-    &:hover{
+    &:hover {
         border-color: transparent;
         box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.15);
     }
 
-    &:hover .title__small{
+    &:hover .title__small {
         color: #A61E26;
     }
 }
 
-.info__block_small{
+.info__block_small {
     display: flex;
     flex-direction: column;
     gap: 15px;
 
-    &>h2{
+    &>h2 {
         font-size: 16px;
         font-weight: 600;
     }
-    
-    &>p{
+
+    &>p {
         font-weight: 400;
         font-size: 16px;
     }
 }
 
-.popup{
+.popup {
     position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
+    top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 0;
     padding: 50px;
+    transition: 0.4s;
+    opacity: 0;
+    visibility: hidden;
 
-    &>.over{
+    &.active {
+        z-index: 10;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:not(.active) .shema__image {
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    &:not(.active) .popup__switch_block {
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+
+    &>.over {
         position: absolute;
         top: 0;
         left: 0;
@@ -246,7 +266,7 @@
         background-color: rgba(44, 14, 14, 0.5);
     }
 
-    &>.popup__body{
+    &>.popup__body {
         position: relative;
         max-width: 1066px;
         width: 100%;
@@ -258,49 +278,49 @@
         z-index: 11;
         padding: 50px;
 
-        &>.close__popup_btn{
+        &>.close__popup_btn {
             position: absolute;
             top: 25px;
             right: 25px;
             width: 24px;
             height: 24px;
             cursor: pointer;
-            display: flex;            
+            display: flex;
 
-            & svg path{
+            & svg path {
                 transition: 0.4s;
             }
 
-            &:hover svg path{
+            &:hover svg path {
                 fill: #A61E26;
             }
         }
 
-        &>.title{
+        &>.title {
             font-size: 20px;
             font-weight: 600;
             color: #000;
             margin-bottom: 25px;
         }
 
-        &>p{
+        &>p {
             font-size: 18px;
             font-weight: 400;
             color: #000;
             margin-bottom: 15px;
         }
 
-        &>.place{
+        &>.place {
             margin-bottom: 50px;
         }
 
-        &>.popup__nav{
+        &>.popup__nav {
             width: fit-content;
             display: flex;
             gap: 50px;
             margin-bottom: 50px;
 
-            &>a{
+            &>a {
                 display: flex;
                 font-weight: 600;
                 font-size: 20px;
@@ -309,22 +329,22 @@
                 color: #000;
                 width: fit-content;
 
-                &.active{
+                &.active {
                     color: #A61E26;
                 }
 
-                &:hover{
+                &:hover {
                     color: #A61E26;
                 }
             }
         }
 
-        &>.popup__switch_container{
+        &>.popup__switch_container {
             position: relative;
             width: 100%;
             height: 100%;
 
-            &>.popup__switch_block{
+            &>.popup__switch_block {
                 width: inherit;
                 overflow-y: auto;
                 position: absolute;
@@ -338,12 +358,12 @@
                 display: flex;
                 flex-direction: column;
 
-                &.active{
+                &.active {
                     visibility: visible;
-                    opacity: 1; 
+                    opacity: 1;
                 }
 
-                &>.list__ticket{
+                &>.list__ticket {
                     display: flex;
                     flex-direction: column;
                     gap: 25px;
@@ -352,33 +372,33 @@
                     height: inherit;
                     overflow-y: auto;
 
-                    &>.ticket__item{
+                    &>.ticket__item {
                         display: flex;
                         width: 100%;
                         padding: 15px 25px;
                         align-items: center;
                         background-color: #FAFAF9;
 
-                        &>.ticket__title{
+                        &>.ticket__title {
                             font-size: 18px;
                             font-weight: 600;
                             color: #171717;
                         }
 
-                        &>.ticket__price{
+                        &>.ticket__price {
                             margin-left: auto;
                             font-size: 16px;
                             font-weight: 400;
                             color: #000000;
                         }
 
-                        &>.ticket__counter{
+                        &>.ticket__counter {
                             margin-left: 50px;
                             display: flex;
                             align-items: center;
                             gap: 10px;
 
-                            &>.counter__item{
+                            &>.counter__item {
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
@@ -390,34 +410,37 @@
                                 transition: 0.3s;
                                 cursor: pointer;
 
-                                &:hover{
+                                &:hover {
                                     background-color: #56040A;
                                 }
 
-                                &:active{
+                                &:active {
                                     background-color: #3f0004;
                                 }
 
-                                &.dis{
+                                &.dis {
                                     background-color: #C4C4C4;
-                                    &::before{
+
+                                    &::before {
                                         display: none;
                                     }
                                 }
 
-                                &::after, &::before{
+                                &::after,
+                                &::before {
                                     position: absolute;
                                     content: "";
                                     width: 2px;
                                     height: 15px;
                                     background-color: #fff;
                                 }
-                                &::after{
+
+                                &::after {
                                     transform: rotate(90deg);
                                 }
                             }
 
-                            &>.total__count{
+                            &>.total__count {
                                 font-size: 16px;
                                 font-weight: 400;
                                 color: #000;
@@ -426,10 +449,17 @@
                     }
                 }
 
-                &>.btn{
+                &>.btn {
                     margin-left: auto;
                 }
             }
         }
     }
+}
+
+.type_activity__list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 25px 20px;
 }

@@ -34,14 +34,14 @@
             <p class="date">17 января, 19:00</p>
             <p class="place">Пензенская областная филармония</p>
             <nav class="popup__nav">
-                <a href="scheme" class="active">Схема зала</a>
-                <a href="tickets">билет</a>
+                <a href="scheme" class="popup__btn active">Схема зала</a>
+                <a href="tickets" class="popup__btn">билет</a>
             </nav>
             <div class="popup__switch_container">
-                <div class="popup__switch_block" data-name="scheme">
-                    <img src="assets/media/temp/shema.png" alt="">
+                <div class="popup__switch_block active" data-name="scheme">
+                    <img class="shema__image" src="assets/media/temp/shema.png" alt="">
                 </div>
-                <div class="popup__switch_block active" data-name="tickets">
+                <div class="popup__switch_block" data-name="tickets">
                     <ul class="list__ticket">
                         <li class="ticket__item">
                             <p class="ticket__title">Входной</p>
@@ -146,9 +146,6 @@
                     <button class="btn btn__fill" id="bay__ticket_popup">Купить билет</button>
                 </div>
             </div>
-        </div>
-        <div class="popup__body">
-            
         </div>
     </div>
     
@@ -269,7 +266,7 @@
             </div>
         </li>
     </ul>
-    <a href="#" class="btn">Button teg a</a>
+    <a href="#" class="btn" data-popup="def">Button teg a</a>
     <br>
     <a href="#" class="btn btn__fill" data-popup="def">Button fill teg a</a>
     <br>
@@ -342,4 +339,4 @@
 
     <script src="assets/js/main.js"></script>
 </body>
-</html>
+</html> 

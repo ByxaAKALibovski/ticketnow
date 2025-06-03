@@ -1,5 +1,94 @@
 <template>
-    <main>
-        Новости
-    </main>
+  <main>
+    <section class="news__sec">
+      <div class="container">
+        <h2 class="title__def">новости</h2>
+        <ul class="news__list">
+          <li v-for="newsItem in news" :key="newsItem.id_news" class="info__block_spec">
+            <h2 class="title__small">{{ newsItem.title }}</h2>
+            <div class="text__block">
+              <p class="text__def">{{ newsItem.description }}</p>
+            </div>
+            <p class="text__small">Дата публикации: {{ formatDate(newsItem.date_public) }}</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="home_info__sec">
+      <div class="container">
+        <div class="info__block">
+          <p class="text__def">
+            В городе с большим количеством развлечений не соскучишься, о них вам расскажет афиша
+            Пензы, где собраны все культурные события. Здесь вы найдете описание всех мероприятий:
+            концертов, театральных и цирковых выступлений, шоу, фестивалей.
+          </p>
+          <h2 class="title__small">Куда сходить в Пензе?</h2>
+          <div class="text__block">
+            <p class="text__def">
+              Если вы не знаете, что сегодня делать, и ищете, куда бы пойти, то заходите на сайт
+              ticketnow.ru и выбирайте событие себе по душе. Афиша мероприятий в Пензе содержит
+              информацию обо всех развлечениях на этой неделе и следующих, поэтому вы можете
+              спланировать, к примеру, семейный поход в театр наперед. Билеты на сегодня, на завтра
+              и другие дни можно купить не выходя из дома, через интернет, цены на них такие же, как
+              и у официальных представителей.
+            </p>
+            <p class="text__def">
+              Если вы определились, куда пойти в Пензе, то регистрируйтесь на сайте, нажимайте
+              кнопку «Купить билет» и оформляйте заявку. Процедура проста и не займет много времени.
+              Помимо стандартных способов оплаты, вы можете взять билет в рассрочку. Если вдруг
+              передумаете идти на мероприятие, которое уже оплачено, то возможен возврат билета.
+              Сумма, которая будет возвращена, зависит от количества дней до начала события.
+            </p>
+          </div>
+          <h2 class="title__small">
+            Почему выгодно покупать билеты на мероприятия на ticketnow.ru?
+          </h2>
+          <div class="text__block">
+            <p class="text__def">
+              На данном сайте представлена полная культурная афиша событий Пензы, что позволяет
+              быстро и удобно ознакомиться с ними. Среди основных преимуществ анонса мероприятий:
+              большое разнообразие развлечений, возможность купить билет через интернет, простая
+              система возврата.
+            </p>
+            <p class="text__def">
+              Не упускайте возможность весело и интересно провести время и наполнить свою жизнь
+              позитивными эмоциями!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </template>
+
+<script>
+import apiService from '@/services/apiService';
+
+export default {
+  name: 'NewsPage',
+  data() {
+    return {
+      news: []
+    };
+  },
+  async created() {
+    await this.fetchNews();
+  },
+  methods: {
+    async fetchNews() {
+      try {
+        const response = await apiService.news.getAll();
+        if (response.data.status === 'success') {
+          this.news = response.data.data.news;
+        }
+      } catch (error) {
+        console.error('Ошибка при получении новостей:', error);
+      }
+    },
+    formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('ru-RU', options);
+    }
+  }
+};
+</script>

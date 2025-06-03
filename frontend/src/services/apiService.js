@@ -73,6 +73,7 @@ const apiService = {
       formData.append('title', data.title);
       formData.append('date', data.date);
       formData.append('time', data.time);
+      formData.append('description', data.description);
       formData.append('price', data.price);
       if (data.image) {
         formData.append('image', data.image);
@@ -94,6 +95,7 @@ const apiService = {
       formData.append('title', data.title);
       formData.append('date', data.date);
       formData.append('time', data.time);
+      formData.append('description', data.description);
       formData.append('price', data.price);
       if (data.image) {
         formData.append('image', data.image);
@@ -120,6 +122,9 @@ const apiService = {
   platform: {
     getAll() {
       return apiClient.get('/platform');
+    },
+    getOne(id) {
+      return apiClient.get(`/platform/${id}`);
     },
     create(data) {
       const formData = new FormData();
@@ -166,12 +171,9 @@ const apiService = {
     create(data) {
       const formData = new FormData();
       formData.append('title', data.title);
-      if (data.image) {
-        formData.append('image', data.image);
-      }
       // Предполагается, что новости могут содержать дополнительные поля, например, content
-      if (data.content) {
-        formData.append('content', data.content);
+      if (data.description) {
+        formData.append('description', data.description);
       }
       return apiClient.post('/news', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
@@ -180,11 +182,8 @@ const apiService = {
     update(id, data) {
       const formData = new FormData();
       formData.append('title', data.title);
-      if (data.image) {
-        formData.append('image', data.image);
-      }
-      if (data.content) {
-        formData.append('content', data.content);
+      if (data.description) {
+        formData.append('description', data.description);
       }
       return apiClient.put(`/news/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
